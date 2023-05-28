@@ -5525,7 +5525,7 @@ end
 ----------------------------------------------------------------------------------------------------
 end
 ----------------------------------------------------------------------------------------------------
-if text == "/start" and not programmer(msg) then
+if text == "" and not programmer(msg) then
 if redis:get(bot_id..":Notice") then
 if not redis:sismember(bot_id..":user_id",msg.sender_id.user_id) then
 scarduser_id = redis:scard(bot_id..":user_id") +1
@@ -5623,6 +5623,26 @@ end
 end
 end
 end
+
+if text == '/start' or text == 'ggg' or text == 'ggggg ' or text == 'ggggg' then  
+photo = "https://t.me/TeamHso/3"
+local Text =[[*
+- هـلابيك قلبي انا بوت حمايه كروبات .
+عملي هوا حمايه كروبات من لفروخ .
+يرجى تفعيلي بكروب مرتب حته مانيج خواتهم .
+مرات اعض وازاكط ديربالكم .
+مطوري مو عمر المصلاوي لينيج ابو لمزيل *
+––––––––––––
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'قناه المطور حسو', url = 'https://t.me/TeamHso'}},
+{{text = ' مبرمجي العار', url = 't.me/YOSSS'}},
+}
+local msg_id = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/TeamHso&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+ 
 ----------------------------------------------------------------------------------------------------
 if msg.content.luatele == "messageChatDeleteMember" then 
 if msg.sender_id.user_id ~= bot_id then
