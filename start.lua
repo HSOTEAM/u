@@ -5511,7 +5511,26 @@ type = 'inline',data = {
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, reply_dev)
 end
 end
-if text == "/HSO" then 
+
+if text == '/HSO' or text == 'ggg' or text == 'ggggg ' or text == 'ggggg' then  
+photo = "https://t.me/hsote/2"
+local Text =[[*
+- اهـلا بك عزيزي في البوت انت المطور هنا .
+- هذه هي قائمه تحكم السورس .
+  
+*]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '✮ التحديثات .',data="Updates"}},
+{{text = '✮ الاحصائيات .',data="indfo"}},
+{{text = '✮ اعدادات البوت .',data="botsettings"}},
+{{text = '✮ الاشتراك الاجباري .',data="chatmem"},{text = '✮ الاذاعه .',data="sendtomem"}},
+{{text = '✮ النسخ الاحتياطيه .',data="infoAbg"}},
+}
+local msg_id = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/hsote&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+if text == "/ffg" then 
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, bot.replyMarkup{
 type = 'inline',data = {
 {{text = '✮ التحديثات .',data="Updates"}},
@@ -5625,15 +5644,15 @@ end
 end
 
 if text == '/start' or text == 'ggg' or text == 'ggggg ' or text == 'ggggg' then  
-photo = "https://t.me/TeamHso/3"
+photo = "https://t.me/hsote/2"
 local Text =[[*
-- هـلابيك قلبي انا بوت حمايه كروبات .
-عملي هوا حمايه كروبات من لفروخ .
-يرجى تفعيلي بكروب مرتب حته مانيج خواتهم .
-مرات اعض وازاكط ديربالكم .
-مطوري مو عمر المصلاوي لينيج ابو لمزيل *
-––––––––––––
-]]
+✯︙أهلآ بك في بوت الحمايه
+✯︙اختصاص البوت حماية المجموعات من السبام والتفليش والخ..
+✯︙لتفعيل البوت اتبع الخطوات..
+✯︙اضف البوت الى مجموعتك
+✯︙ارفعه ادمن {مشرف}
+✯︙سيتم تفعيل كروبك تلقائيآ
+*]]
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '- ضيفني لكروبك +',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
@@ -5642,7 +5661,7 @@ keyboard.inline_keyboard = {
 {{text = '  -  قناه السورس .', url = 't.me/teamhso'}},
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/TeamHso&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/hsote&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
  
 ----------------------------------------------------------------------------------------------------
