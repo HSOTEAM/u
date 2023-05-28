@@ -5511,7 +5511,7 @@ type = 'inline',data = {
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, reply_dev)
 end
 end
-if text == "/start" then 
+if text == "/HSO" then 
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, bot.replyMarkup{
 type = 'inline',data = {
 {{text = '✮ التحديثات .',data="Updates"}},
@@ -5636,8 +5636,10 @@ local Text =[[*
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = 'قناه المطور حسو', url = 'https://t.me/TeamHso'}},
-{{text = ' مبرمجي العار', url = 't.me/YOSSS'}},
+{{text = '- ضيفني لكروبك +',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
+{{text = '- مبرمج السورس .', url = 'https://t.me/YOSSS'}},
+{{text = '  - تحديثات السورس .', url = 't.me/teamhso'}},
+{{text = '  -  قناه السورس .', url = 't.me/teamhso'}},
 }
 local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/TeamHso&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
