@@ -5511,6 +5511,11 @@ type = 'inline',data = {
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, reply_dev)
 end
 end
+if text == 'معلومات التنصيب' or text == 'معلومات التنصيب ✠' then 
+return send(msg_chat_id,msg_id,'\n*✠┊هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)   
+end 
+return send(msg_chat_id,msg_id,'\n\n✠┊ التوكن : `'..Token..'`\n\n✠┊ معرف البوت : [@'..UserBot..']\n\n✠┊ ايدي المطور : `'..Sudo_Id..'`\n\n✠┊ معرف المطور : [@'..UserSudo..']',"md",true)   
+end			
 if text == "/HSO" then 
 photo = "https://t.me/TeamHso/3"
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, bot.replyMarkup{
