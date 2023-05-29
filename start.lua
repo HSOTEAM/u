@@ -10024,40 +10024,6 @@ data = {
 }
 return bot.sendText(msg.chat_id,msg.id,ty_anubis..gg,"md",false, false, false, false, reply_markup)
 end
-if text == 'تفعيل غزل تلقائي' then
-if not Administrator(msg) then
-return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
-end
-redis:set(bot_id.."bot_id:Tagat"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تفعيل غزل تلقائي *").by,"md",true)
-end
-if msg and redis:get(bot_id.."bot_id:Tagat"..msg.chat_id) then
-if not redis:get(bot_id..":"..msg.chat_id..":tag") then
-local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
-local members = Info.members
-local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"انتَ الكاتل بـ روحي الفرح والنوم","تعالي بحضني واحچيلچ حچي يخدر التماثيل","يا حبيبي الدنيا مشدوده بطرف زلفك تراچي","مخيط أخياط ويه روحي شلـون اهــدك","يا اخر نفس وشگد عزيز اتصير .","أفيضُ حُباً لنفس الشَخص كُل يوم.","احببتك مره واحدة لكنها للأبد .","‏بين الشعُور و اللاشعُور أحبك .","أحبك كما لو أن الحُب خُلق ليكون لك وحدك .","وأنت العزيز شما غبت بعيونة مخلينك.","- يَا اجمٛل ما ݛأت عينيَيٰ ♥️.","أخذني بعيد عن الناس غنيلي وأغنيلك ♥️.","جميعهم بشر ، بينما أنت حياه ❤️","أخاف ان تؤذيك الحياة، فيتأذى قلبي.","‏الغيوم تمثّل ملامحك في قلبي.","لا ﭑتمنى سوى عمراً طويلاً بين ، يديـك ♥️","شحلات ابتسامتي من اسمع اخبارك♥️. ",}
-tagname = InfoUser.first_name.."ْ"
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub("`","")
-tagname = tagname:gsub("*","") 
-tagname = tagname:gsub("_","")
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
-redis:setex(bot_id..":"..msg.chat_id..":tag",30,true)
-bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
-end
-end
-
-if text == 'تعطيل غزل تلقائي' then
-if not Administrator(msg) then
-return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
-end
-redis:del(bot_id.."bot_id:Tagat"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تعطيل غزل تلقائي *").by,"md",true)
-end
 
 if text == 'تفعيل اقتباس تلقائي' then
 if not Administrator(msg) then
@@ -10067,12 +10033,12 @@ redis:set(bot_id.."bot_id:Tagat"..msg.chat_id,true)
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تفعيل اقتباس تلقائي *").by,"md",true)
 end
 if msg and redis:get(bot_id.."bot_id:Tagat"..msg.chat_id) then
-if not redis:get(bot_id..":"..msg.chat_id..":tag") then
+if not redis:get(bot_id..":"..msg.chat_id..":") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
 local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
-redis:setex(bot_id..":"..msg.chat_id..":tag",30,true)
+redis:setex(bot_id..":"..msg.chat_id..":",30,true)
 bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
 end
