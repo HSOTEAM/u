@@ -10058,6 +10058,39 @@ end
 redis:del(bot_id.."bot_id:Tagat"..msg.chat_id) 
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تعطيل غزل تلقائي *").by,"md",true)
 end
+
+if text == 'تفعيل اقتباس تلقائي' then
+if not Administrator(msg) then
+return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
+end
+redis:set(bot_id.."bot_id:Tagat"..msg.chat_id,true) 
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تفعيل اقتباس تلقائي *").by,"md",true)
+end
+if msg and redis:get(bot_id.."bot_id:Tagat"..msg.chat_id) then
+if not redis:get(bot_id..":"..msg.chat_id..":tag") then
+local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members
+local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
+local texting = {"عير بحسو مطوري ","عير بعمر المصلاوي",}
+tagname = InfoUser.first_name.."ْ"
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub("`","")
+tagname = tagname:gsub("*","") 
+tagname = tagname:gsub("_","")
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+redis:setex(bot_id..":"..msg.chat_id..":tag",30,true)
+bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
+end
+end
+if text == 'تعطيل اقتباس تلقائي' then
+if not Administrator(msg) then
+return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
+end
+redis:del(bot_id.."bot_id:Tagat"..msg.chat_id) 
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تعطيل اقتباس تلقائي *").by,"md",true)
+end
 if text == 'رشوة' or text == 'رشوه' or text == 'رشوى' or text == 'رشوا' then
 ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
 if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
