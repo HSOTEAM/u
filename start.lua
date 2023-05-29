@@ -5626,7 +5626,7 @@ end
 end
 
 if text == '/start' or text == 'ggg' or text == 'ggggg ' or text == 'ggggg' then  
-photo = "https://t.me/TeamHso/3"
+photo = "https://t.me/hsote/2"
 local Text =[[*
 - هـلابيك قلبي انا بوت حمايه كروبات .
 عملي هوا حمايه كروبات من لفروخ .
@@ -5643,7 +5643,7 @@ keyboard.inline_keyboard = {
 {{text = '  -  قناه السورس .', url = 't.me/teamhso'}},
 }
 local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/TeamHso&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/hsote&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
  
 ----------------------------------------------------------------------------------------------------
@@ -10024,19 +10024,22 @@ data = {
 }
 return bot.sendText(msg.chat_id,msg.id,ty_anubis..gg,"md",false, false, false, false, reply_markup)
 end
-if text == 'تفعيل التاك التلقائي' then
+if text == 'تفعيل غزل تلقائي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
 end
 redis:set(bot_id.."bot_id:Tagat"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تفعيل التاك التلقائي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تفعيل غزل تلقائي *").by,"md",true)
 end
 if msg and redis:get(bot_id.."bot_id:Tagat"..msg.chat_id) then
 if not redis:get(bot_id..":"..msg.chat_id..":tag") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"✮ تعال لك وين طامس :","✮ الطف مخلوق حياتي 💖 :","✮ الـهَيـبة 💖 :","✮ يـا قمـري ❤️‍🔥 :","✮ مس يحلو 🌚🤍 :","✮ تعا مجمعين ناقصه بس انت يروحي 😔💖 :","✮ وين طامس يحلو 🌚❤️‍🔥 :","✮ تعا نورنه 😉🤍 :","✮ احبك يحلو 😂👽 :","✮ حنسوي العاب تعا 🌚💗 :","✮ هاا طمست 😉🤍 :",}
+local texting = {"انتَ الكاتل بـ روحي الفرح والنوم","تعالي بحضني واحچيلچ حچي يخدر التماثيل","يا حبيبي الدنيا مشدوده بطرف زلفك تراچي","مخيط أخياط ويه روحي شلـون اهــدك","يا اخر نفس وشگد عزيز اتصير .","انته رازونة فرحتي البيهه اشوف اسنيني باجر","لماذا لم تخبر أحداً ، أنك لست بخير .؟!","ما زلتُ أرتبك أمام صوتك ‏رغم أنني أحفظه بحة بحة ♥.","أفيضُ حُباً لنفس الشَخص كُل يوم.","‏بين الشعُور و اللاشعُور أحبك .","- يَا اجمٛل ما ݛأت عينيَيٰ ♥️.","أخذني بعيد عن الناس غنيلي وأغنيلك ♥️.","ومثل جناح طير يرفرف كلبي عليك ☺️","حرت شحجي وشسمعنگ حرت شكتب شعر عنگ حرت وعيوني يردنك يخايب والله احبنك🥺💗","خذني يمَك ، بَعد ما ظَل كُل عذر لا تعتذر .","على رحب وحُب اللّيالي المليئة بالقهوة .","أنتِ الاعّجابُ والعجبُ أنتِ أشبَه برُوحَ .","انتَ وعيونَك شيي يخصني للأبَـد🥺💞 ","
+ريتك تحسي بثلاث حبي لك و غيرتي عليك وكرهي لوقتي بدونك...💕","
+إلليلة مو مثل إلليالي إهواي خايف  ضمني بيك
+",}
 tagname = InfoUser.first_name.."ْ"
 tagname = tagname:gsub('"',"")
 tagname = tagname:gsub('"',"")
@@ -10051,12 +10054,12 @@ bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md')
 end
 end
 
-if text == 'تعطيل التاك التلقائي' then
+if text == 'تعطيل غزل تلقائي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
 end
 redis:del(bot_id.."bot_id:Tagat"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تعطيل التاك التلقائي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تعطيل غزل تلقائي *").by,"md",true)
 end
 if text == 'رشوة' or text == 'رشوه' or text == 'رشوى' or text == 'رشوا' then
 ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
@@ -16908,7 +16911,33 @@ end
 end
 bot.sendText(msg.chat_id,msg.id,listall,"md",true)  
 end
-
+if text == 'تفعيل الومضه التلقائي' or text == 'تفعيل ومضه تلقائي' then
+Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل التاك التلقائي *").unLock,"md",true) 
+end
+if text == 'تعطيل التاك التلقائي' or text == 'تعطيل التاكات' then
+Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل التاك التلقائي *").unLock,"md",true) 
+end
+if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
+if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
+local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members
+local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
+local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
+tagname = InfoUser.first_name.."ْ"
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub("`","")
+tagname = tagname:gsub("*","") 
+tagname = tagname:gsub("_","")
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
+Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
+LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
+end
+end
 if text == "تحدي" then
 local Info_Members = bot.searchChatMembers(msg.chat_id, "*", 200)
 local List = Info_Members.members
@@ -17043,6 +17072,7 @@ end
 redis:del(bot_id.."aftare"..msg.chat_id) 
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*⇜ ابشر عطلت افتاري *").by,"md",true)
 end
+
 if text == 'تفعيل الترفيه' or text == 'تفعيل ترفيه' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
@@ -23492,6 +23522,7 @@ data = {
 return bot.sendText(msg.chat_id, msg.id, txt, 'md', false, false, false, false, reply_markup)
 end
 end
+
 if text == 'تعطيل' then
 if msg.can_be_deleted_for_all_users == false then
 bot.sendText(msg.chat_id,msg.id,"*✮ عذراً البوت ليس ادمن في القروب .*","md",true)  
