@@ -10039,7 +10039,7 @@ local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
 local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
 redis:setex(bot_id..":"..msg.chat_id..":",30,true)
-bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
+bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
 end
 end
 if text == 'تعطيل اقتباس تلقائي' then
