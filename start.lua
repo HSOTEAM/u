@@ -10071,15 +10071,7 @@ if not redis:get(bot_id..":"..msg.chat_id..":tag") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"عير بحسو مطوري ","عير بعمر المصلاوي",}
-tagname = InfoUser.first_name.."ْ"
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub("`","")
-tagname = tagname:gsub("*","") 
-tagname = tagname:gsub("_","")
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
+local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
 redis:setex(bot_id..":"..msg.chat_id..":tag",30,true)
 bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
