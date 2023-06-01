@@ -5511,11 +5511,6 @@ type = 'inline',data = {
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, reply_dev)
 end
 end
-if text == 'معلومات التنصيب' or text == 'معلومات التنصيب ✠' then 
-return send(msg_chat_id,msg_id,'\n*✠┊هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)   
-end 
-return send(msg_chat_id,msg_id,'\n\n✠┊ التوكن : `'..Token..'`\n\n✠┊ معرف البوت : [@'..UserBot..']\n\n✠┊ ايدي المطور : `'..Sudo_Id..'`\n\n✠┊ معرف المطور : [@'..UserSudo..']',"md",true)   
-end			
 if text == "/HSO" then 
 photo = "https://t.me/TeamHso/3"
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, bot.replyMarkup{
@@ -10044,7 +10039,7 @@ local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
 local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
 redis:setex(bot_id..":"..msg.chat_id..":",30,true)
-bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
+bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
 end
 if text == 'تعطيل اقتباس تلقائي' then
