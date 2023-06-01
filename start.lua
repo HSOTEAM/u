@@ -7877,37 +7877,8 @@ end
 end
 end
 end
-if text == "الحاسبه" or text == "اله حاسبه" or text == "الاله الحاسبه" then
-Redis:del(black..msg.sender_id.user_id..msg.chat_id.."num")
-start_mrkup = LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = 'ON', data = msg.sender_id.user_id..'ON'},{text = 'DEL', data = msg.sender_id.user_id..'DEL'},{text = 'AC', data = msg.sender_id.user_id..'rest'},{text = 'OFF', data = msg.sender_id.user_id..'OFF'},
-},
-{
-{text = '^', data = msg.sender_id.user_id..'calc&^'},{text = '√', data = msg.sender_id.user_id..'calc&√'},{text = '(', data = msg.sender_id.user_id..'calc&('},{text = ')', data = msg.sender_id.user_id..'calc&)'},
-},
-{
-{text = '7', data = msg.sender_id.user_id..'calc&7'},{text = '8', data = msg.sender_id.user_id..'calc&8'},{text = '9', data = msg.sender_id.user_id..'calc&9'},{text = '÷', data = msg.sender_id.user_id..'calc&/'},
-},
-{
-{text = '4', data = msg.sender_id.user_id..'calc&4'},{text = '5', data = msg.sender_id.user_id..'calc&5'},{text = '6', data = msg.sender_id.user_id..'calc&6'},{text = 'x', data = msg.sender_id.user_id..'calc&*'},
-},
-{
-{text = '1', data = msg.sender_id.user_id..'calc&1'},{text = '2', data = msg.sender_id.user_id..'calc&2'},{text = '3', data = msg.sender_id.user_id..'calc&3'},{text = '-', data = msg.sender_id.user_id..'calc&-'},
-},
-{
-{text = '0', data = msg.sender_id.user_id..'calc&0'},{text = '.', data = msg.sender_id.user_id..'calc&.'},{text = '+', data = msg.sender_id.user_id..'calc&+'},{text = '=', data = msg.sender_id.user_id..'equal'},
-},
-{
-{text = 'مطور السورس', url = 'https://t.me/yosss'},
-},
-}
-}
-send(msg.chat_id,msg.id,"• اهلا بك في بوت الحاسبه\n• welcome to calculator","md",true, false, false, true, start_mrkup)
-return false 
 end
+
 if text == 'الروليت' or text == 'روليت' then
 if not redis:get(bot_id.."Status:Games"..msg.chat_id) then
 return bot.sendText(msg.chat_id,msg.id," ✮ الالعاب معطلة من قبل المشرفين","md",true)
@@ -10066,7 +10037,7 @@ if not redis:get(bot_id..":"..msg.chat_id..":") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"لاتسامح من شوه سمعتك يوماً","اناقة لسانك هي ترجمة لاناقة فكرك","إنما الناس لطفاء بحجم المصلحة ، فلا تتعمق ·","نهاية الأجازات بتوجع أكثر من نهاية العلاقات","إهمال بسيط قد يقتل حبا عظيما.","‏كان الوعد نبقَى لبعَض شلي إختَلف؟.","القهُوة أولاً والهُدوء ثانيًا ثم لا شيء..","- ‏لا يليقُ بنا ، من لا يعرفُ قيمتنا","مو محُتاجين كلام حِلو محتاجين قلوب نظيَفة","مُلفته للإنتباه كالعطر من غير ضجيج .","الله لا يوريك برودي إذا انكسر خاطري.","الله لا يوريك برودي إذا انكسر خاطري.","مُلفته للإنتباه كالعطر من غير ضجيج .","مُلفته للإنتباه كالعطر من غير ضجيج .","ليتنا نقدر نتخطى كل شعور ما نبي نحسه..","- لم أخسر أحدا، تنازلت عن الأشياء الرخيصة فقط.","ليت كل شيء جميل يظل كجمال بدايته.","أول ضياع للنفس، أن تراعي شعورهم وتنسى نفسك.","عزة النفس نقطة ينتهي عندها ألف شخص","عزة النفس نقطة ينتهي عندها ألف شخص","لا تتوقف حتى تصبح فخوراً بنفسك .","كل ما تشعر به ستجده بين السطور.","كوب قهوة و سوالف شخصٍ أودّه .",}
+local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
 redis:setex(bot_id..":"..msg.chat_id..":",30,true)
 bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
 end
