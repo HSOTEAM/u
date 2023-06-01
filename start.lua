@@ -3364,11 +3364,11 @@ end
 if Text and Text:match('(%d+)ON') then
 local sendrr = Text:match('(%d+)ON') 
 if tonumber(IdUser) == tonumber(sendrr) then
-redis:del(bot_id..IdUser..ChatId.."num")
-edit(ChatId,Msg_id,"✮ تم تشغيل الحاسبه بنجاح ✅\n✮ restarted ✅" , 'html', false, false, calc_markup)
-
-end
-end
+Redis:del(black..IdUser..ChatId.."num")
+edit(ChatId,Msg_id,"• تم تشغيل الحاسبه بنجاح ✅\n• restarted ✅" , 'html', false, false, calc_markup)
+else
+LuaTele.answerCallbackQuery(data.id, "• الامر لا يخصك", true)
+endend
 if Text and Text:match('(%d+)OFF') then
 local sendrr = Text:match('(%d+)OFF')
 if tonumber(IdUser) == tonumber(sendrr) then
@@ -7877,8 +7877,6 @@ end
 end
 end
 end
-end
-
 if text == 'الروليت' or text == 'روليت' then
 if not redis:get(bot_id.."Status:Games"..msg.chat_id) then
 return bot.sendText(msg.chat_id,msg.id," ✮ الالعاب معطلة من قبل المشرفين","md",true)
@@ -10037,7 +10035,7 @@ if not redis:get(bot_id..":"..msg.chat_id..":") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"عير بحسو مطوري ","اقتباس زربائي ","اقتباس خرياني"," اقتباس بولي"," اقتباس عيراوي","كسخت البوت",}
+local texting = {"لاتسامح من شوه سمعتك يوماً","اناقة لسانك هي ترجمة لاناقة فكرك","إنما الناس لطفاء بحجم المصلحة ، فلا تتعمق ·","نهاية الأجازات بتوجع أكثر من نهاية العلاقات","إهمال بسيط قد يقتل حبا عظيما.","‏كان الوعد نبقَى لبعَض شلي إختَلف؟.","القهُوة أولاً والهُدوء ثانيًا ثم لا شيء..","- ‏لا يليقُ بنا ، من لا يعرفُ قيمتنا","مو محُتاجين كلام حِلو محتاجين قلوب نظيَفة","مُلفته للإنتباه كالعطر من غير ضجيج .","الله لا يوريك برودي إذا انكسر خاطري.","الله لا يوريك برودي إذا انكسر خاطري.","مُلفته للإنتباه كالعطر من غير ضجيج .","مُلفته للإنتباه كالعطر من غير ضجيج .","ليتنا نقدر نتخطى كل شعور ما نبي نحسه..","- لم أخسر أحدا، تنازلت عن الأشياء الرخيصة فقط.","ليت كل شيء جميل يظل كجمال بدايته.","أول ضياع للنفس، أن تراعي شعورهم وتنسى نفسك.","عزة النفس نقطة ينتهي عندها ألف شخص","عزة النفس نقطة ينتهي عندها ألف شخص","لا تتوقف حتى تصبح فخوراً بنفسك .","كل ما تشعر به ستجده بين السطور.","كوب قهوة و سوالف شخصٍ أودّه .",}
 redis:setex(bot_id..":"..msg.chat_id..":",30,true)
 bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
 end
@@ -13664,7 +13662,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 if not redis:sismember(bot_id.."in_company:", msg.sender_id.user_id) then
 return bot.sendText(msg.chat_id,msg.id, "⇜ انت غير موظف في اي شركة","md",true)  
 end
-local Cname = redis:get(bot_id.."companys_name:"..msg.sender_id.user_id) or redis:get(bot_id.."in_company:name:"..msg.sender_id.user_id)
+local Cname = redis:get(bot_id.."companys_name:"..msg.sender_id.user_id) orredis:get(bot_id.."in_company:name:"..msg.sender_id.user_id)
 local owner_id = redis:get(bot_id.."companys_owner:"..Cname)
 local Cid = redis:get(bot_id.."companys_id:"..Cname)
 local Cmem = redis:smembers(bot_id.."company:mem:"..Cname)
