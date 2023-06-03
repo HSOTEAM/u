@@ -3364,11 +3364,11 @@ end
 if Text and Text:match('(%d+)ON') then
 local sendrr = Text:match('(%d+)ON') 
 if tonumber(IdUser) == tonumber(sendrr) then
-Redis:del(black..IdUser..ChatId.."num")
-edit(ChatId,Msg_id,"• تم تشغيل الحاسبه بنجاح ✅\n• restarted ✅" , 'html', false, false, calc_markup)
-else
-LuaTele.answerCallbackQuery(data.id, "• الامر لا يخصك", true)
-endend
+redis:del(bot_id..IdUser..ChatId.."num")
+edit(ChatId,Msg_id,"✮ تم تشغيل الحاسبه بنجاح ✅\n✮ restarted ✅" , 'html', false, false, calc_markup)
+
+end
+end
 if Text and Text:match('(%d+)OFF') then
 local sendrr = Text:match('(%d+)OFF')
 if tonumber(IdUser) == tonumber(sendrr) then
@@ -3878,7 +3878,7 @@ t = [[
 ✮ لعبة الروليت ~⪼ روليت
 ✮ لعبة احكام ~⪼ احكام
 ✮ لعبة العقاب ~⪼ عقاب
-✮ لعبة الكلمات ~⪼ كلام
+✮ لعبة الكلمات ~⪼ كلمات
 ━━━━━━━━━━━
 ✮ الالعاب الاحترافيه ~ العاب اونلاين
 ━━━━━━━━━━━
@@ -4789,8 +4789,8 @@ bot.editMessageText(chat_id,msg_id,"*✮ اعدادات البوت .*", 'md', tr
 end
 if Text == "UpSu" then
 bot.answerCallbackQuery(data.id, "✮ تم تحديث السورس", true)
-os.execute('rm -rf start.lua') 
-download('https://raw.githubusercontent.com/HSOTEAM/u/master/start.lua','start.lua')
+os.execute('rm -rf start.lua')
+os.execute('curl -s https://ghp_UMaaNiqiPh3KaMssen9DaClql3UzzD4@raw.githubusercontent.com/SourceTelanD/u/main/start.lua -o start.lua')
 dofile('start.lua')  
 end
 if Text == "UpBot" then
@@ -5511,8 +5511,7 @@ type = 'inline',data = {
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, reply_dev)
 end
 end
-if text == "/HSO" then 
-photo = "https://t.me/TeamHso/3"
+if text == "/start" then 
 bot.sendText(msg.chat_id,msg.id,"*✮ اهلا بك في قائمه الاوامر  .*","md", true, false, false, false, bot.replyMarkup{
 type = 'inline',data = {
 {{text = '✮ التحديثات .',data="Updates"}},
@@ -5526,7 +5525,7 @@ end
 ----------------------------------------------------------------------------------------------------
 end
 ----------------------------------------------------------------------------------------------------
-if text == "" and not programmer(msg) then
+if text == "/start" and not programmer(msg) then
 if redis:get(bot_id..":Notice") then
 if not redis:sismember(bot_id..":user_id",msg.sender_id.user_id) then
 scarduser_id = redis:scard(bot_id..":user_id") +1
@@ -5624,28 +5623,6 @@ end
 end
 end
 end
-
-if text == '/start' or text == 'ggg' or text == 'ggggg ' or text == 'ggggg' then  
-photo = "https://t.me/hsote/2"
-local Text =[[*
-- هـلابيك قلبي انا بوت حمايه كروبات .
-عملي هوا حمايه كروبات من لفروخ .
-يرجى تفعيلي بكروب مرتب حته مانيج خواتهم .
-مرات اعض وازاكط ديربالكم .
-مطوري مو عمر المصلاوي لينيج ابو لمزيل *
-––––––––––––
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '- ضيفني لكروبك +',url="https://t.me/"..bot.getMe().username.."?startgroup=new"}},
-{{text = '- مبرمج السورس .', url = 'https://t.me/YOSSS'}},
-{{text = '  - تحديثات السورس .', url = 't.me/teamhso'}},
-{{text = '  -  قناه السورس .', url = 't.me/teamhso'}},
-}
-local msg_id = msg.id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token..'/sendPhoto?chat_id=' .. msg.chat_id .. '&photo=https://t.me/hsote&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
- 
 ----------------------------------------------------------------------------------------------------
 if msg.content.luatele == "messageChatDeleteMember" then 
 if msg.sender_id.user_id ~= bot_id then
@@ -6685,8 +6662,8 @@ end
 if text == ("تحديث السورس") then 
 if programmer(msg) then  
 bot.sendText(msg.chat_id,msg.id,"*✮ تم تحديث السورس الى الاصدار الجديد*","md",true)
-os.execute('rm -rf start.lua') 
-download('https://raw.githubusercontent.com/HSOTEAM/u/master/start.lua','start.lua')
+os.execute('rm -rf start.lua')
+os.execute('curl -s https://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@raw.githubusercontent.com/Yyygghf/nn/main/start.lua -o start.lua')
 dofile('start.lua')  
 end
 end
@@ -7877,6 +7854,8 @@ end
 end
 end
 end
+end
+
 if text == 'الروليت' or text == 'روليت' then
 if not redis:get(bot_id.."Status:Games"..msg.chat_id) then
 return bot.sendText(msg.chat_id,msg.id," ✮ الالعاب معطلة من قبل المشرفين","md",true)
@@ -10022,30 +10001,39 @@ data = {
 }
 return bot.sendText(msg.chat_id,msg.id,ty_anubis..gg,"md",false, false, false, false, reply_markup)
 end
-
-if text == 'تفعيل اقتباس تلقائي' then
+if text == 'تفعيل التاك التلقائي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
 end
 redis:set(bot_id.."bot_id:Tagat"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تفعيل اقتباس تلقائي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تفعيل التاك التلقائي *").by,"md",true)
 end
 if msg and redis:get(bot_id.."bot_id:Tagat"..msg.chat_id) then
-if not redis:get(bot_id..":"..msg.chat_id..":") then
+if not redis:get(bot_id..":"..msg.chat_id..":tag") then
 local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"لاتسامح من شوه سمعتك يوماً","اناقة لسانك هي ترجمة لاناقة فكرك","إنما الناس لطفاء بحجم المصلحة ، فلا تتعمق ·","نهاية الأجازات بتوجع أكثر من نهاية العلاقات","إهمال بسيط قد يقتل حبا عظيما.","‏كان الوعد نبقَى لبعَض شلي إختَلف؟.","القهُوة أولاً والهُدوء ثانيًا ثم لا شيء..","- ‏لا يليقُ بنا ، من لا يعرفُ قيمتنا","مو محُتاجين كلام حِلو محتاجين قلوب نظيَفة","مُلفته للإنتباه كالعطر من غير ضجيج .","الله لا يوريك برودي إذا انكسر خاطري.","الله لا يوريك برودي إذا انكسر خاطري.","مُلفته للإنتباه كالعطر من غير ضجيج .","مُلفته للإنتباه كالعطر من غير ضجيج .","ليتنا نقدر نتخطى كل شعور ما نبي نحسه..","- لم أخسر أحدا، تنازلت عن الأشياء الرخيصة فقط.","ليت كل شيء جميل يظل كجمال بدايته.","أول ضياع للنفس، أن تراعي شعورهم وتنسى نفسك.","عزة النفس نقطة ينتهي عندها ألف شخص","عزة النفس نقطة ينتهي عندها ألف شخص","لا تتوقف حتى تصبح فخوراً بنفسك .","كل ما تشعر به ستجده بين السطور.","كوب قهوة و سوالف شخصٍ أودّه .",}
-redis:setex(bot_id..":"..msg.chat_id..":",30,true)
-bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
+local texting = {"✮ تعال لك وين طامس :","✮ الطف مخلوق حياتي 💖 :","✮ الـهَيـبة 💖 :","✮ يـا قمـري ❤️‍🔥 :","✮ مس يحلو 🌚🤍 :","✮ تعا مجمعين ناقصه بس انت يروحي 😔💖 :","✮ وين طامس يحلو 🌚❤️‍🔥 :","✮ تعا نورنه 😉🤍 :","✮ احبك يحلو 😂👽 :","✮ حنسوي العاب تعا 🌚💗 :","✮ هاا طمست 😉🤍 :",}
+tagname = InfoUser.first_name.."ْ"
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub("`","")
+tagname = tagname:gsub("*","") 
+tagname = tagname:gsub("_","")
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
+redis:setex(bot_id..":"..msg.chat_id..":tag",30,true)
+bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
 end
-if text == 'تعطيل اقتباس تلقائي' then
+
+if text == 'تعطيل التاك التلقائي' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
 end
 redis:del(bot_id.."bot_id:Tagat"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تعطيل اقتباس تلقائي *").by,"md",true)
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*↯︙تم تعطيل التاك التلقائي *").by,"md",true)
 end
 if text == 'رشوة' or text == 'رشوه' or text == 'رشوى' or text == 'رشوا' then
 ballanceed = redis:get(bot_id.."boob"..msg.sender_id.user_id) or 0
@@ -13242,12 +13230,6 @@ else
 bot.sendText(msg.chat_id,msg.id, "⇜ انت اعزب","md",true)
 end
 end
-if text == 'معلومات التنصيب' or text == 'معلومات التنصيب ✠' then 
-if not msg.Asasy then  
-return send(msg_chat_id,msg_id,'\n*✠┊هذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)   
-end 
-return send(msg_chat_id,msg_id,'\n\n✠┊ التوكن : `'..Token..'`\n\n✠┊ معرف البوت : [@'..UserBot..']\n\n✠┊ ايدي المطور : `'..Sudo_Id..'`\n\n✠┊ معرف المطور : [@'..UserSudo..']',"md",true)   
-end
 if text == 'تفعيل السوق' or text == 'تفعيل سوق' or text == 'فتح سوق' or text == 'فتح السوق' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
@@ -13662,7 +13644,7 @@ if redis:sismember(bot_id.."booob",msg.sender_id.user_id) then
 if not redis:sismember(bot_id.."in_company:", msg.sender_id.user_id) then
 return bot.sendText(msg.chat_id,msg.id, "⇜ انت غير موظف في اي شركة","md",true)  
 end
-local Cname = redis:get(bot_id.."companys_name:"..msg.sender_id.user_id) orredis:get(bot_id.."in_company:name:"..msg.sender_id.user_id)
+local Cname = redis:get(bot_id.."companys_name:"..msg.sender_id.user_id) or redis:get(bot_id.."in_company:name:"..msg.sender_id.user_id)
 local owner_id = redis:get(bot_id.."companys_owner:"..Cname)
 local Cid = redis:get(bot_id.."companys_id:"..Cname)
 local Cmem = redis:smembers(bot_id.."company:mem:"..Cname)
@@ -16897,6 +16879,7 @@ end
 end
 bot.sendText(msg.chat_id,msg.id,listall,"md",true)  
 end
+
 if text == "تحدي" then
 local Info_Members = bot.searchChatMembers(msg.chat_id, "*", 200)
 local List = Info_Members.members
@@ -17031,7 +17014,6 @@ end
 redis:del(bot_id.."aftare"..msg.chat_id) 
 bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*⇜ ابشر عطلت افتاري *").by,"md",true)
 end
-
 if text == 'تفعيل الترفيه' or text == 'تفعيل ترفيه' then
 if not Administrator(msg) then
 return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
@@ -23481,7 +23463,6 @@ data = {
 return bot.sendText(msg.chat_id, msg.id, txt, 'md', false, false, false, false, reply_markup)
 end
 end
-
 if text == 'تعطيل' then
 if msg.can_be_deleted_for_all_users == false then
 bot.sendText(msg.chat_id,msg.id,"*✮ عذراً البوت ليس ادمن في القروب .*","md",true)  
