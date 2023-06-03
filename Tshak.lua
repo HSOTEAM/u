@@ -8596,32 +8596,7 @@ end
 if text== "همسه"  or text == "همسة" then
 return LuaTele.sendText(msg.chat_id,msg.id,"●اهلا بك عزيزي\n●اكتب معرف البوت ثم الرساله ثم معرف الشخص\n●مثال\n@J_As_bot بحبك @Q_o_ll ")
 end
-if text == 'تفعيل اقتباس تلقائي' or text == 'تفعيل الاقباس التلقائي' then
-Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
-return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"* التلقائي *").unLock,"md",true) 
-end
-if text == 'تعطيل التاك التلقائي' or text == 'تعطيل التاكات' then
-Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
-return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*تم تعطيل التاك التلقائي *").unLock,"md",true) end
-if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
-if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
-local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
-local members = Info.members
-local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
-tagname = InfoUser.first_name.."ْ"
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub("`","")
-tagname = tagname:gsub("*","") 
-tagname = tagname:gsub("_","")
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
-Redis:setex(Tshak..":"..msg.chat_id..":tag",60,true)
-LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
-end
-end
+
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
 local Text ='لاختيار اغنيه اخري اتك ع زر بالاسفل' 
@@ -16526,8 +16501,7 @@ NameBots = BotName[math.random(#BotName)]
 if ban.username then
 Creator = " "..ban.first_name.." "
 else
-Creator = " حسو\n"
-end
+Creator = " حسو\n"end
 local texxtt = ''..NameBots..''
 if photo.total_count > 0 then
 keyboard = {} 
@@ -16560,8 +16534,7 @@ local BotName = {
 }
 NameBots = BotName[math.random(#BotName)]
 if ban.username then
-Creator = " "..ban.first_name.." "
-else
+Creator = " "..ban.first_name.." "else
 Creator = " حسو\n"
 end
 local texxtt = ''..NameBots..''
@@ -16573,12 +16546,9 @@ keyboard.inline_keyboard = {
 },
 {
 {text = '➕ اضفني لمجموعتك', url = 't.me/'..UserBot..'?startgroup=new'}, 
-},
-}
+},}
 local msgg = msg_id/2097152/0.5
-https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(NameBots).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
+https.request("https://api.telegram.org/bot"..Token.."/sendphoto?chat_id=" .. msg_chat_id .. "&photo="..photo.photos[1].sizes[#photo.photos[1].sizes].photo.remote.id.."&caption=".. URL.escape(NameBots).."&reply_to_message_id="..msgg.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))endend
 if text == 'تنظيف المشتركين' then
 if not msg.ControllerBot then 
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*● هاذا الامر يخص { '..Controller_Num(1)..' }* ',"md",true)  
