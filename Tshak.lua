@@ -21726,8 +21726,7 @@ local ballanceekk = (conisss + ballanceed)
 Redis:incrby(Tshak.."flos"..IdUser , conisss)
 Redis:set(Tshak.."flos:m"..IdUser,conisss)
 ballancee = Redis:get(Tshak.."flos"..IdUser) or 0
-local nice = "* › الاجابه صح\nمبروك ربحت 
- ↢ ( "..conisss.." ﷼ 💵 )\n( "..conisss.." ﷼ 💵 ) «- فلوسك في العبه \n︙✯ ( "..ballancee.." ﷼ 💵 )  ︙✯  فلوسك في البنك*"
+local nice = "* › الاجابه صح\nمبروك ربحت  ↢ ( "..conisss.." ﷼ 💵 )\n( "..conisss.." ﷼ 💵 ) «- فلوسك في العبه \n︙✯ ( "..ballancee.." ﷼ 💵 )  ︙✯  فلوسك في البنك*"
 local reply_markup = LuaTele.replyMarkup{
 type = 'inline',
 data = {
