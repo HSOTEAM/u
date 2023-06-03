@@ -6551,10 +6551,6 @@ if TextMsg == 'الالعاب' then
 Redis:set(Tshak.."Status:Games"..msg_chat_id,true) 
 return LuaTele.sendText(msg_chat_id,msg_id,"● تم تفعيل الالعاب ","md",true)
 end
-if TextMsg == 'اقتباس تلقائي' then
-Redis:set(Tshak.."Status:aqtpas"..msg_chat_id,true)
-return LuaTele.sendText(msg_chat_id,msg_id,"● تم تفعيل الاقتباس ","md",true)
-end
 if TextMsg == 'التحقق' then
     Redis:set(Tshak.."Status:joinet"..msg_chat_id,true) 
     return LuaTele.sendText(msg_chat_id,msg_id,"● تم تفعيل التحقق ","md",true)
@@ -8530,7 +8526,7 @@ end
 if banyt.result.first_name then
 klajq = ' '..banyt.result.first_name..' '
 else
-klajq = 'لا يوجد'
+klaj = 'لا يوجد'
 end
 local abnj = "**["..name.." ](t.me/"..banyt.result.username..")*\n*"
 keybanyt = {} 
@@ -8594,36 +8590,34 @@ Redis:set(Tshak.."id:HELPBEVQ:Groups", Message_Reply.sender_id.user_id)
 return LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(Message_Reply.sender_id.user_id,"● تم ترقيته  مساعد").Reply,"md",true)  
 end
 end
-
-
-
-
 if text== "همسه"  or text == "همسة" then
 return LuaTele.sendText(msg.chat_id,msg.id,"●اهلا بك عزيزي\n●اكتب معرف البوت ثم الرساله ثم معرف الشخص\n●مثال\n@J_As_bot بحبك @Q_o_ll ")
 end
-if text == 'تفعيل اقتباس تلقائي' then
-if not Administrator(msg) then
-return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
+if text == 'تفعيل تاك تلقائي' or text == 'تفعيل التاك التلقائي' then
+Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل التاك التلقائي *").unLock,"md",true)
 end
-redis:set(bot_id.."Status:aqtpas"..msg.chat_id,true) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تفعيل اقتباس تلقائي *").by,"md",true)
+if text == 'تعطيل التاك التلقائي' or text == 'تعطيل التاكات' then
+Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل التاك التلقائي *").unLock,"md",true) 
 end
-if msg and redis:get(bot_id.."Status:aqtpas"..msg.chat_id) then
-if not redis:get(bot_id..":"..msg.chat_id..":") then
-local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
+if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
+if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
+local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
-local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"لاتسامح من شوه سمعتك يوماً","اناقة لسانك هي ترجمة لاناقة فكرك","إنما الناس لطفاء بحجم المصلحة ، فلا تتعمق ·","نهاية الأجازات بتوجع أكثر من نهاية العلاقات","إهمال بسيط قد يقتل حبا عظيما.","‏كان الوعد نبقَى لبعَض شلي إختَلف؟.","القهُوة أولاً والهُدوء ثانيًا ثم لا شيء..","- ‏لا يليقُ بنا ، من لا يعرفُ قيمتنا","مو محُتاجين كلام حِلو محتاجين قلوب نظيَفة","مُلفته للإنتباه كالعطر من غير ضجيج .","الله لا يوريك برودي إذا انكسر خاطري.","الله لا يوريك برودي إذا انكسر خاطري.","مُلفته للإنتباه كالعطر من غير ضجيج .","مُلفته للإنتباه كالعطر من غير ضجيج .","ليتنا نقدر نتخطى كل شعور ما نبي نحسه..","- لم أخسر أحدا، تنازلت عن الأشياء الرخيصة فقط.","ليت كل شيء جميل يظل كجمال بدايته.","أول ضياع للنفس، أن تراعي شعورهم وتنسى نفسك.","عزة النفس نقطة ينتهي عندها ألف شخص","عزة النفس نقطة ينتهي عندها ألف شخص","لا تتوقف حتى تصبح فخوراً بنفسك .","كل ما تشعر به ستجده بين السطور.","كوب قهوة و سوالف شخصٍ أودّه .",}
-redis:setex(bot_id..":"..msg.chat_id..":",1800,true)
-bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
-end
-end
-if text == 'تعطيل اقتباس تلقائي' then
-if not Administrator(msg) then
-return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
-end
-redis:del(bot_id.."Status:aqtpas"..msg.chat_id) 
-bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تعطيل اقتباس تلقائي *").by,"md",true)
+local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
+local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
+tagname = InfoUser.first_name.."ْ"
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub("`","")
+tagname = tagname:gsub("*","") 
+tagname = tagname:gsub("_","")
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
+Redis:setex(Tshak..":"..msg.chat_id..":tag",100,true)
+LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') end
 end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
