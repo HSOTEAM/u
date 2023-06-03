@@ -4489,6 +4489,7 @@ end
 local gmria = Redis:scard(Tshak.."allM"..msg.chat_id)  
 LuaTele.sendText(msg_chat_id,msg_id,"● عدد الميديا الموجود هو (* "..gmria.." *)","md")
 end
+
 if text == "تعطيل المسح التلقائي" then
 if not msg.Developers then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*● هاذا الامر يخص { '..Controller_Num(3)..' }* ',"md",true)  
@@ -13102,6 +13103,30 @@ Redis:set(Tshak.."Lock:vico"..msg_chat_id,"ktm")
 LuaTele.sendText(msg_chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"● تم قفـل الصوت").lockKtm,"md",true)  
 return false
 end 
+if text == 'تفعيل اقتباس تلقائي' then
+if not Administrator(msg) then
+return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
+end
+redis:set(bot_id.."Status:aqtpas"..msg.chat_id,true) 
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تفعيل اقتباس تلقائي *").by,"md",true)
+end
+if msg and redis:get(bot_id.."Status:aqtpas"..msg.chat_id) then
+if not redis:get(bot_id..":"..msg.chat_id..":") then
+local Info = bot.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members
+local InfoUser = bot.getUser(members[math.random(#members)].member_id.user_id)
+local texting = {"لاتسامح من شوه سمعتك يوماً","اناقة لسانك هي ترجمة لاناقة فكرك","إنما الناس لطفاء بحجم المصلحة ، فلا تتعمق ·","نهاية الأجازات بتوجع أكثر من نهاية العلاقات","إهمال بسيط قد يقتل حبا عظيما.","‏كان الوعد نبقَى لبعَض شلي إختَلف؟.","القهُوة أولاً والهُدوء ثانيًا ثم لا شيء..","- ‏لا يليقُ بنا ، من لا يعرفُ قيمتنا","مو محُتاجين كلام حِلو محتاجين قلوب نظيَفة","مُلفته للإنتباه كالعطر من غير ضجيج .","الله لا يوريك برودي إذا انكسر خاطري.","الله لا يوريك برودي إذا انكسر خاطري.","مُلفته للإنتباه كالعطر من غير ضجيج .","مُلفته للإنتباه كالعطر من غير ضجيج .","ليتنا نقدر نتخطى كل شعور ما نبي نحسه..","- لم أخسر أحدا، تنازلت عن الأشياء الرخيصة فقط.","ليت كل شيء جميل يظل كجمال بدايته.","أول ضياع للنفس، أن تراعي شعورهم وتنسى نفسك.","عزة النفس نقطة ينتهي عندها ألف شخص","عزة النفس نقطة ينتهي عندها ألف شخص","لا تتوقف حتى تصبح فخوراً بنفسك .","كل ما تشعر به ستجده بين السطور.","كوب قهوة و سوالف شخصٍ أودّه .",}
+redis:setex(bot_id..":"..msg.chat_id..":",1800,true)
+bot.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
+end
+end
+if text == 'تعطيل اقتباس تلقائي' then
+if not Administrator(msg) then
+return bot.sendText(msg.chat_id,msg.id,'\n*✮ هذا الامر يخص الادمن* ',"md",true)  
+end
+redis:del(bot_id.."Status:aqtpas"..msg.chat_id) 
+bot.sendText(msg.chat_id,msg.id,Reply_Status(msg.sender_id.user_id,"*✯︙تم تعطيل اقتباس تلقائي *").by,"md",true)
+end
 if text == "قفل الصوت بالطرد" then 
 if not msg.Addictive then
 return LuaTele.sendText(msg_chat_id,msg_id,'\n*● هاذا الامر يخص { '..Controller_Num(7)..' }* ',"md",true)  
