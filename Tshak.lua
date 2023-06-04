@@ -8621,6 +8621,19 @@ Redis:setex(Tshak..":"..msg.chat_id..":tag",60,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md')  
 end 
 end
+if text == "بوت" or text == "البوت" then 
+
+if Redis:get(Tshak.."Tshak:Status:Games"..msg.chat_id) then 
+
+local texting = {"هلا حبي اسمي حسو لتلح","نجب لك محمد تاجراس حسو","محمد نياج حسو","محمد نياج الموصل", 
+
+}  
+
+return LuaTele.sendText(msg_chat_id,msg_id,texting[math.random(#texting)],'md') 
+
+end 
+
+end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
 local Text ='لاختيار اغنيه اخري اتك ع زر بالاسفل' 
