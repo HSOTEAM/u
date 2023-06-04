@@ -8603,8 +8603,8 @@ if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
 local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200) 
 local members = Info.members 
 local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id) 
-local texting = {"لاتسامح من شوه ",}
-Redis:setex(Tshak..":"..msg.chat_id..":",1800,true)
+local texting = {"عير بحسو","عير بيكم","وعير بلسورسات","وعيربلعراق","وعير بلدول",}
+Redis:setex(Tshak..":"..msg.chat_id..":",100,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
 endend
 if text == "بوت" or text == "البوت" then 
