@@ -8592,18 +8592,29 @@ end
 if text== "همسه"  or text == "همسة" then
 return LuaTele.sendText(msg.chat_id,msg.id,"●اهلا بك عزيزي\n●اكتب معرف البوت ثم الرساله ثم معرف الشخص\n●مثال\n@J_As_bot بحبك @Q_o_ll ")
 end
-if text == 'تفعيل اقتباس تلقائي' or text == 'تفعيل الاتقباس التلقائي' then 
-Redis:set(Tshak.."Tshak:Games"..msg.chat_id,true)  return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل الاقتباس التلقائي *").unLock,"md",true)  end 
-if text == 'تعطيل الاقتباس التلقائي' or text == 'تعطيل التاكات' then 
-Redis:del(Tshak.."Tshak:Games"..msg.chat_id)  
-return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل الاقتباس التلقائي *").unLock,"md",true)  
-end 
-if msg and Redis:get(Tshak.."Tshak:Games"..msg.chat_id) then 
-if not Redis:get(Tshak..":"..msg.chat_id..":tag") then 
-local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200) 
-local members = Info.members 
-local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id) 
-local texting = {"عير بحسو","عير بيكم","وعير بلسورسات","وعيربلعراق","وعير بلدول",}
+if text == 'تفعيل تاك تلقائي' or text == 'تفعيل التاك التلقائي' then
+Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل التاك التلقائي *").unLock,"md",true) 
+end
+if text == 'تعطيل التاك التلقائي' or text == 'تعطيل التاكات' then
+Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل التاك التلقائي *").unLock,"md",true) 
+end
+if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
+if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
+local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members
+local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
+local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
+tagname = InfoUser.first_name.."ْ"
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub('"',"")
+tagname = tagname:gsub("`","")
+tagname = tagname:gsub("*","") 
+tagname = tagname:gsub("_","")
+tagname = tagname:gsub("]","")
+tagname = tagname:gsub("[[]","")
+usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
 Redis:setex(Tshak..":"..msg.chat_id..":tag",240,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
