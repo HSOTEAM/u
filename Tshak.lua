@@ -8607,30 +8607,9 @@ local members = Info.members
 local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
 local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
 tagname = InfoUser.first_name.."ْ"
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub('"',"")
-tagname = tagname:gsub("`","")
-tagname = tagname:gsub("*","") 
-tagname = tagname:gsub("_","")
-tagname = tagname:gsub("]","")
-tagname = tagname:gsub("[[]","")
-usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
-Redis:setex(Tshak..":"..msg.chat_id..":tag",240,true)
+Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
-end
-if text == "بوت" or text == "البوت" then 
-
-if Redis:get(Tshak.."Tshak:Status:Games"..msg.chat_id) then 
-
-local texting = {"هلا حبي اسمي حسو لتلح","نجب لك محمد تاجراس حسو","محمد نياج حسو","محمد نياج الموصل", 
-
-}  
-
-return LuaTele.sendText(msg_chat_id,msg_id,texting[math.random(#texting)],'md') 
-
-end 
-
 end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
