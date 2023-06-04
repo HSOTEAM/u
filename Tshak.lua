@@ -8608,7 +8608,7 @@ local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_i
 local texting = {"• تعال لك وين طامس :","• الطف مخلوق حياتي 💖 :","• الـهَيـبة 💖 :","• يـا قمـري ❤️‍🔥 :","• مس يحلو 🌚🤍 :","• تعا مجمعين ناقصه بس انت يروحي 😔💖 :","• وين طامس يحلو 🌚❤️‍🔥 :","• تعا نورنه 😉🤍 :","• احبك يحلو 😂👽 :","• حنسوي العاب تعا 🌚💗 :","• هاا طمست 😉🤍 :",}
 tagname = InfoUser.first_name.."ْ"
 Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
-LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
+LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..,'md') 
 end
 end
 if text == "غنيلي"  then 
