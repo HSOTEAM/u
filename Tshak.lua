@@ -8632,7 +8632,7 @@ if text == 'تفعيل نداء' or text == 'تفعيل النداء' then
 
 
 
-Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
+Redis:set(Tshak.."Tshak:ndaa"..msg.chat_id,true) 
 
 
 
@@ -8657,7 +8657,7 @@ if text == 'تعطيل نداء' or text == 'تعطيل النداء' then
 
 
 
-Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
+Redis:del(Tshak.."Tshak:ndaa"..msg.chat_id) 
 
 
 
@@ -8677,7 +8677,7 @@ end
 
 
 
-if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
+if msg and Redis:get(Tshak.."Tshak:ndaa"..msg.chat_id) then
 
 
 
