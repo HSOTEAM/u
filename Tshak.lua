@@ -8611,13 +8611,13 @@ end
 end
 
 if text == 'تفعيل اقتباس تلقائي' or text == 'تفعيل الاذكار التلقائي' then
-Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true)
+Redis:set(Tshak.."Tshak:Games"..msg.chat_id,true)
 return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل اقتباس التلقائي *").unLock,"md",true) end
 if text == 'تعطيل اقتباس التلقائي' or text == 'تعطيل اذكار تلقائي' then
-Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
+Redis:del(Tshak.."Tshak:Games"..msg.chat_id) 
 return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل اقتباس التلقائي *").unLock,"md",true)
 end
-if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
+if msg and Redis:get(Tshak.."Tshak:Games"..msg.chat_id) then
 if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
 local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
