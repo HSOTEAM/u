@@ -8605,7 +8605,7 @@ local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
 local members = Info.members
 local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
 local texting = {"‏﴿ رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنْتَ خَيْرُ الْوَارِثِينَ ﴾..","‏﴿وَيَخِرُّونَ لِلْأَذْقَانِ يَبْكُونَ وَيَزِيدُهُمْ خُشُوعًا ۩﴾","‏( وَمَا يُلَقَّاهَا إِلَّا الَّذِينَ صَبَرُوا )","رَبَّنَا وَتَقَبَّلْ دُعَائَنا ♥️🤲🏻.","﴿ ‏إِنَّ رَبِّي لَسَمِيعُ الدُّعَاءِ ﴾","‏﴿ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ﴾","﴿ قَالَ إِنَّمَآ أَشْكُواْ بَثِّي وَحُـزْنِي إِلَىٰ ﷲ ﴾","ألحّو وتَعبدّو ؛ فَلعلّها تُصادف ليلَة القدر.","اللهم أختم هذا الشهر بما يُفرح قلوبنا .","﴿نُورٌ عَلَىٰ نُورٍ  يَهْدِي اللَّهُ لِنُورِهِ مَنْ يَشَاءُ﴾.","ولاتُحمِّلنا مَا لا طاقَة لنا بهِ، خَفِّف عَنَّا كُل ثقل بِقلوبنا.","﴿ فَدَعا رَبَّهُ أَنّي مَغلوبٌ فَانتَصِر ﴾ .","﴿ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ ﴾ .","‏﴿وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ﴾","-‏﴿رَبَّنَا لاَ تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا﴾.","- اللهمّ جمّال الشعُور ومغفِرة الذنوب ونعِيمُ الجنّة .","‏﴿ يَا أَيُّهَا الْإِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ ﴾","‏﴿ وَأَدخِلني بِرَحمَتِكَ في عِبادِكَ الصّالِحينَ ﴾","﴿ تِلْكَ ٱلْجَنَّةُ ٱلَّتِي نُورِثُ مِنْ عِبَادِنَا مَن كَانَ تَقِيًّا ﴾",}
-Redis:setex(Tshak..":"..msg.chat_id..":tag",1800,true)
+Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md') 
 end
 end
@@ -8674,42 +8674,6 @@ return LuaTele.sendText(msg_chat_id,msg_id,Text,"md",true)
 else
 return LuaTele.sendText(msg_chat_id,msg_id,"انت دخلت عبر الرابط محدش ضافك","md",true) 
 end
-end
-if text and text:match("^all (.*)$") or text:match("^@all (.*)$") or text == "@all" or text == "all" then 
-local ttag = text:match("^all (.*)$") or text:match("^@all (.*)$") 
-if not msg.Managers then
-return LuaTele.sendText(msg_chat_id,msg_id,'\n*● هاذا الامر يخص⦗ '..Controller_Num(6)..' ⦘* ',"md",true)  
-end
-if Redis:get(Tshak.."lockalllll"..msg_chat_id) == "off" then
-return LuaTele.sendText(msg_chat_id,msg_id,'*● تم تعطيل @all من قبل المدراء*',"md",true)  
-end
-local Info_Members = LuaTele.searchChatMembers(msg_chat_id, "*", 200)
-x = 0 
-tags = 0 
-local list = Info_Members.members
-for k, v in pairs(list) do 
-local UserInfo = LuaTele.getUser(v.member_id.user_id)
-if x == 2 or x == tags or k == 0 then 
-tags = x + 2 
-if ttag then
-t = "#all\n "..ttag.."" 
-else
-t = "#all "
-end
-end 
-x = x + 1 
-if UserInfo.first_name ~= '' then
-t = t.."› ["..UserInfo.first_name.."](tg://user?id="..UserInfo.id..")\n"
-if x == 2 or x == tags or k == 0 then 
-if ttag then
-Text = t:gsub('#all\n '..ttag..',','#all\n '..ttag..'\n') 
-else 
-Text = t:gsub('#all,','#all\n')
-end
-sendText(msg_chat_id,Text,0,'md') 
-end 
-end 
-end 
 end
 if text == "نبذتي" or text == "البايو" then
 local  bain = LuaTele.getUserFullInfo(msg.sender_id.user_id)
