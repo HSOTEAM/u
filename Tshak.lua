@@ -8632,7 +8632,7 @@ if text == 'تفعيل نداء' or text == 'تفعيل النداء' then
 
 
 
-Redis:set(Revor.."Revor:Tagat"..msg.chat_id,true) 
+Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
 
 
 
@@ -8657,7 +8657,7 @@ if text == 'تعطيل نداء' or text == 'تعطيل النداء' then
 
 
 
-Redis:del(Revor.."Revor:Tagat"..msg.chat_id) 
+Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
 
 
 
@@ -8677,26 +8677,15 @@ end
 
 
 
-if msg and Redis:get(Revor.."Revor:Tagat"..msg.chat_id) then
+if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
 
 
 
 
-if not Redis:get(Revor..":"..msg.chat_id..":tag") then
-
+if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
 
-
-
-local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
-
-
-
-
-local members = Info.members
-
-
-
-
+local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members
 local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
 
 
@@ -8748,7 +8737,7 @@ tagname = tagname:gsub("[[]","")
 
 
 usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
-Redis:setex(Revor..":"..msg.chat_id..":tag",30,true)
+Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
 end
