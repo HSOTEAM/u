@@ -8592,25 +8592,6 @@ end
 if text== "همسه"  or text == "همسة" then
 return LuaTele.sendText(msg.chat_id,msg.id,"●اهلا بك عزيزي\n●اكتب معرف البوت ثم الرساله ثم معرف الشخص\n●مثال\n@J_As_bot بحبك @Q_o_ll ")
 end
-
-if text == 'تفعيل اقتباس تلقائي' or text == 'تفعيل الاقتباس التلقائي' then
-Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
-return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل اقتباس التلقائي *").unLock,"md",true) 
-end
-if text == 'تعطيل اقتباس التلقائي' or text == 'تعطيل الاقتباس تلقائي' then
-Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
-return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل اقتباس التلقائي *").unLock,"md",true) 
-end
-if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
-if not Redis:get(Tshak..":"..msg.chat_id..":tag") then
-local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
-local members = Info.members
-local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)
-local texting = {"عير بطيزك زيكو ","عير بحسو","عير بلعراق","عير بلكروب",}
-Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
-LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')
-end
-end
 if text == 'تفعيل التاكات' or text == 'تفعيل التاك التلقائي' then
 
 
