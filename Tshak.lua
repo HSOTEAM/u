@@ -8616,7 +8616,7 @@ if text == 'تفعيل التاكات' or text == 'تفعيل التاك الت�
 
 
 
-Redis:set(Tshak.."Tshak:tagg"..msg.chat_id,true) 
+Redis:set(Tshak.."Tshak:Tagat"..msg.chat_id,true) 
 
 
 
@@ -8641,7 +8641,7 @@ if text == 'تعطيل التاك التلقائي' or text == 'تعطيل ال�
 
 
 
-Redis:del(Tshak.."Tshak:tagg"..msg.chat_id) 
+Redis:del(Tshak.."Tshak:Tagat"..msg.chat_id) 
 
 
 
@@ -8661,7 +8661,7 @@ end
 
 
 
-if msg and Redis:get(Tshak.."Tshak:tagg"..msg.chat_id) then
+if msg and Redis:get(Tshak.."Tshak:Tagat"..msg.chat_id) then
 
 
 
