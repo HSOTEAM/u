@@ -8713,9 +8713,62 @@ tagname = tagname:gsub("[[]","")
 
 
 usr = "["..tagname.."](tg://user?id="..InfoUser.id..")"
-Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
+Redis:setex(Tshak..":"..msg.chat_id..":tag",25,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
+end
+if text == 'تفعيل اذكار تلقائي' or text == 'تفعيل الاذكار التلقائي' then  
+
+ 
+
+Redis:set(Tshak.."Tshak:athkar"..msg.chat_id,true)   
+
+ 
+
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تفعيل اذكار التلقائي *").unLock,"md",true)   
+
+ 
+
+end  
+
+ 
+
+  
+
+ 
+
+if text == 'تعطيل اذكار التلقائي' or text == 'تعطيل اذكار تلقائي' then  
+
+ 
+
+Redis:del(Tshak.."Tshak:athkar"..msg.chat_id)   
+
+ 
+
+return LuaTele.sendText(msg.chat_id,msg_id,Reply_Status(msg.sender_id.user_id,"*᥀︙تم تعطيل اذكار التلقائي *").unLock,"md",true)   
+
+ 
+
+end  
+
+ 
+
+  
+
+ 
+
+if msg and Redis:get(Tshak.."Tshak:athkar"..msg.chat_id) then  
+
+ 
+
+if not Redis:get(Tshak..":"..msg.chat_id..":tag") then 
+local Info = LuaTele.searchChatMembers(msg.chat_id, "*", 200)
+local members = Info.members  
+local InfoUser = LuaTele.getUser(members[math.random(#members)].member_id.user_id)  
+local texting = {"‏﴿ رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنْتَ خَيْرُ الْوَارِثِينَ ﴾..","‏﴿وَيَخِرُّونَ لِلْأَذْقَانِ يَبْكُونَ وَيَزِيدُهُمْ خُشُوعًا ۩﴾","‏( وَمَا يُلَقَّاهَا إِلَّا الَّذِينَ صَبَرُوا )","رَبَّنَا وَتَقَبَّلْ دُعَائَنا ♥️🤲🏻.","﴿ ‏إِنَّ رَبِّي لَسَمِيعُ الدُّعَاءِ ﴾","‏﴿ رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ﴾","﴿ قَالَ إِنَّمَآ أَشْكُواْ بَثِّي وَحُـزْنِي إِلَىٰ ﷲ ﴾","ألحّو وتَعبدّو ؛ فَلعلّها تُصادف ليلَة القدر.","اللهم أختم هذا الشهر بما يُفرح قلوبنا .","﴿نُورٌ عَلَىٰ نُورٍ  يَهْدِي اللَّهُ لِنُورِهِ مَنْ يَشَاءُ﴾.","ولاتُحمِّلنا مَا لا طاقَة لنا بهِ، خَفِّف عَنَّا كُل ثقل بِقلوبنا.","﴿ فَدَعا رَبَّهُ أَنّي مَغلوبٌ فَانتَصِر ﴾ .","﴿ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ ﴾ .","‏﴿وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ﴾","-‏﴿رَبَّنَا لاَ تُؤَاخِذْنَا إِن نَّسِينَا أَوْ أَخْطَأْنَا﴾.","- اللهمّ جمّال الشعُور ومغفِرة الذنوب ونعِيمُ الجنّة .","‏﴿ يَا أَيُّهَا الْإِنْسَانُ مَا غَرَّكَ بِرَبِّكَ الْكَرِيمِ ﴾","‏﴿ وَأَدخِلني بِرَحمَتِكَ في عِبادِكَ الصّالِحينَ ﴾","﴿ تِلْكَ ٱلْجَنَّةُ ٱلَّتِي نُورِثُ مِنْ عِبَادِنَا مَن كَانَ تَقِيًّا ﴾",}  
+
+Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)  
+LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')   end  
 end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
