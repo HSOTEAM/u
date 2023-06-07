@@ -8771,7 +8771,7 @@ Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')   end  
 end
 if text == 'اقتباسات' and not 
-local reply_markup = LuaTele.replyMarkup{
+LuaTele.replyMarkup{
 type = 'inline',
 data = {
 {
