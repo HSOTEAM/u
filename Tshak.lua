@@ -8770,6 +8770,16 @@ local texting = {"‏﴿ رَبِّ لَا تَذَرْنِي فَرْدًا و�
 Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)  
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')   end  
 end
+if text == 'اقتباسات' and not 
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = '✯ اقتباسات حب', data = msg.sender_id.user_id..'/bioold'},{text = '✯ اقتباسات حزينه', data = msg.sender_id.user_id..'/tttyy'},
+},
+}}
+return LuaTele.sendText(msg_chat_id, msg_id, '✯︙اختر نوع الاقتباس من الازرار الي تحت ،', 'md', false, false, false, false, reply_markup)
+end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
 local Text ='لاختيار اغنيه اخري اتك ع زر بالاسفل' 
