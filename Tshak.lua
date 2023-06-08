@@ -8778,7 +8778,7 @@ data = {
 {text = '✯ اقتباسات حب', data = msg.sender_id.user_id..'/bioold'},{text = '✯ اقتباسات حزينه', data = msg.sender_id.user_id..'/tttyy'},
 },
 }}
-LuaTele.sendText(msg_chat_id, msg_id, '✯︙اختر نوع الاقتباس من الازرار الي تحت ،', 'md', false, false, false, false, reply_markup)
+sendText(msg_chat_id, msg_id, '✯︙اختر نوع الاقتباس من الازرار الي تحت ،', 'md', false, false, false, false, reply_markup)
 end
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
