@@ -8798,9 +8798,16 @@ data = {
 
 
 
-local list = {",هلو فريخي"
-",هلو كسي"
-",هلوات عير بيكم"
+local list = {
+"انيجك حسو ونيج لعراق كله بليله سوده",
+"حسو لفريخخخخخخخ انيجك",
+"انيجك ليوم زيكو محضريلك عيوره",
+"زيكو محضريلك عيوره تكلاه تلوكك لحلكك",
+"عير بزيكو ",
+"عير بوتك زيكو",
+"زيكو ينيجججج",
+
+
 }
 local bioold = list[math.random(#list)]
 return LuaTele.editMessageText(ChatId,Msg_id,"["..bioold.."]", 'md', true, false, reply_markup)
