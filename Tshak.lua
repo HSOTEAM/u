@@ -8717,10 +8717,18 @@ Redis:setex(Tshak..":"..msg.chat_id..":tag",25,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*'..usr,'md') 
 end
 end
-if text == 'تفعيل اذكار تلقائي' or text == 'تفعيل الاذكار التلقائي' then  
-
- 
-
+if text == 'اقتباساتي' and not Redis:get(Tshak.."Tshak:"..msg.chat_id) then
+local reply_markup = LuaTele.replyMarkup{
+type = 'inline',
+data = {
+{
+{text = '‹ اقتباس حب ›', data = msg.sender_id.user_id..'/bioold'},{text = '‹ اقتباس نيج ›', data = msg.sender_id.user_id..'/biobnt'},
+},
+}
+}
+return LuaTele.sendText(msg_chat_id, msg_id, '⌁ ︙اختر نبذه حسب جنسك ', 'md', false, false, false, false, reply_markup)
+end
+if text == 'تفعيل اذكار تلقائي' or text == 'تفعيل الاذكار التلقائي' then  
 Redis:set(Tshak.."Tshak:athkar"..msg.chat_id,true)   
 
  
@@ -8770,16 +8778,7 @@ local texting = {"‏﴿ رَبِّ لَا تَذَرْنِي فَرْدًا و�
 Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)  
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')   end  
 end
-if text == 'اقتباسات' and not 
-LuaTele.replyMarkup{
-type = 'inline',
-data = {
-{
-{text = '✯ اقتباسات حب', data = msg.sender_id.user_id..'/bioold'},{text = '✯ اقتباسات حزينه', data = msg.sender_id.user_id..'/tttyy'},
-},
-}}
-sendText(msg_chat_id, msg_id, '✯︙اختر نوع الاقتباس من الازرار الي تحت ،', 'md', false, false, false, false, reply_markup)
-end
+
 if text == "غنيلي"  then 
 ban = math.random(3,101); 
 local Text ='لاختيار اغنيه اخري اتك ع زر بالاسفل' 
