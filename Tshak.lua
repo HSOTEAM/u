@@ -8728,6 +8728,85 @@ data = {
 }
 return LuaTele.sendText(msg_chat_id, msg_id, '✯︙اختر نوع الاقتباس من الازرار الي تحت ،', 'md', false, false, false, false, reply_markup)
 end
+if Text and Text:match('(%d+)/bioold') then
+
+
+
+
+local UserId = Text:match('(%d+)/bioold')
+
+
+
+
+if tonumber(IdUser) == tonumber(UserId) then
+
+
+
+
+local reply_markup = LuaTele.replyMarkup{
+
+
+
+
+type = 'inline',
+
+
+
+
+data = {
+
+
+
+
+{
+
+
+
+
+{text = '‹ مره اخرى ›', data = UserId..'/bioold'},
+
+
+
+
+},
+
+
+
+
+{
+
+
+
+
+{text = '‹ رجوع ›', data = UserId..'/backbio'},
+
+
+
+
+},
+
+
+
+
+}
+
+
+
+
+}
+
+
+
+
+local list = {",هلو فريخي"
+",هلو كسي"
+",هلوات عير بيكم"
+}
+local bioold = list[math.random(#list)]
+return LuaTele.editMessageText(ChatId,Msg_id,"["..bioold.."]", 'md', true, false, reply_markup)
+
+end
+end
 if text == 'تفعيل اذكار تلقائي' or text == 'تفعيل الاذكار التلقائي' then  
 Redis:set(Tshak.."Tshak:athkar"..msg.chat_id,true)   
 
