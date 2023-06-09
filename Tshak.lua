@@ -9022,10 +9022,10 @@ ban = math.random(3,101);
 local Text ='لاختيار اغنيه اخري اتك ع زر بالاسفل' 
 keyboard = {}  
 keyboard.inline_keyboard = {
-{{text = 'اغنيه اخري', callback_data = msg.sender_id.user_id..'/songg'}}, 
+{{text = ' اغنيه اخرى', callback_data = msg.sender_id.user_id..'/songg'}}, 
 } 
 local msg_id = msg.id/2097152/0.5 
-https.request("https://api.telegram.org/bot"..Token..'/sendaudio?chat_id=' .. msg_chat_id .. '&audio=https://t.me/faioo8/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendaudio?chat_id=' .. msg_chat_id .. '&audio=https://t.me/AudiosTshak/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "استوري"  then 
 ban = math.random(3,74); 
