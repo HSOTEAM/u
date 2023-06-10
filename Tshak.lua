@@ -8815,25 +8815,53 @@ Redis:setex(Tshak..":"..msg.chat_id..":tag",30,true)
 LuaTele.sendText(msg.chat_id,0,'*'..texting[math.random(#texting)]..'*','md')   
 end  end
 if text == "غنيلي" then
-
-Abs = math.random(4,2824); 
-
-local Text ='تم اختيار المقطع الصوتي لك'
-
-keyboard = {} 
-
-keyboard.inline_keyboard = {{{text = '‹ مره اخرى ›', callback_data = msg.sender_id.user_id..'/Song'}},{{text='تيم حسو',url="t.me/teamhso"}
-
-}
-
-}
-
-local msg_id = msg.id/2097152/0.5
-
+Abs = math.random(4,2824); 
+local Text ='تم اختيار المقطع الصوتي لك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
+}
+}
+local msg_id = msg.id/2097152/0.5
 https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/AudiosWaTaN/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
+if text == "شعر" then
+Abs = math.random(4,2824); 
+local Text ='تم اختيار شعر لك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
+
+}
+}
+local msg_id = msg.id/2097152/0.5
+https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/rteww0/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
+if text == "ريمكس" then
+Abs = math.random(4,2824); 
+local Text ='تم اختيار ريمكس لك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
+}
+}
+local msg_id = msg.id/2097152/0.
+https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/RemixWaTaN/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
+if text == "قرأن" then
+Abs = math.random(4,2824); 
+local Text ='تم اختيار قرأن لك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
+}
+}
+local msg_id = msg.id/2097152/0.
+https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/djsjdjdd/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
+if text == "ميمز" then
+Abs = math.random(4,2824); 
+local Text ='تم اختيار ميمز لك'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
+}
+}
+local msg_id = msg.id/2097152/0.https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/djsjdjdd/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
 if text == "استوري"  then 
 ban = math.random(3,74); 
-local Text ='لاختيار استوري اخري اتك ع زر بالاسفل' 
+local Text ='لاختيار استوري اخري اتك ع زر بالاسفل'
 keyboard = {}  
 keyboard.inline_keyboard = {
 {{text = 'استوري اخري', callback_data = msg.sender_id.user_id..'/storyy'}}, 
