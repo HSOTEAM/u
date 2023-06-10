@@ -8858,7 +8858,7 @@ keyboard = {}
 keyboard.inline_keyboard = {{{text='تيم حسو',url="t.me/teamhso"}
 }
 }
-local msg_id = msg.id/2097152/0.https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/MemzWaTaN/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
+local msg_id = msg.id/2097152/0.https.request("https://api.telegram.org/bot"..Token..'/sendVoice?chat_id=' .. msg.chat_id .. '&voice=https://t.me/MallorcaX/'..Abs..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) end
 if text == "استوري"  then 
 ban = math.random(3,74); 
 local Text ='لاختيار استوري اخري اتك ع زر بالاسفل'
@@ -8867,7 +8867,7 @@ keyboard.inline_keyboard = {
 {{text = 'استوري اخري', callback_data = msg.sender_id.user_id..'/storyy'}}, 
 } 
 local msg_id = msg.id/2097152/0.5 
-https.request("https://api.telegram.org/bot"..Token..'/sendvideo?chat_id=' .. msg_chat_id .. '&video=https://t.me/Qapplu/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+https.request("https://api.telegram.org/bot"..Token..'/sendvideo?chat_id=' .. msg_chat_id .. '&video=https://t.me/MallorcaX/'..ban..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == "عجله الحظ"  then 
 local Text ='اضغظ لائقاف العجله🎰' 
