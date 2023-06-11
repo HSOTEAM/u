@@ -17378,6 +17378,24 @@ local vBandav_Msg = {
 return LuaTele.sendText(msg_chat_id,msg_id,vBandav_Msg[math.random(#vBandav_Msg)],'md')
 end
 end
+if text == "انطي هديه" or text == "هديه" then 
+heen = { 
+" هاك فد عير ." 
+," هاك فد كس وردي. " 
+," هاك فد نعال كطعو ع راسه ." 
+," تريد نيجه من طيز حسو ." 
+," تريد نيجه من طيز لفرخ زيكو . " 
+," عير متريد ." 
+," هوش ." 
+}; 
+sendheen = heen[math.random(#heen)] 
+if tonumber(msg.reply_to_message_id) == 0 then 
+LuaTele.sendText(msg.chat_id,msg.id,"*⌁ : يجب عمل رد على رساله شخص .*","md", true) 
+return false 
+end 
+local Remsg = LuaTele.getMessage(msg.chat_id, msg.reply_to_message_id) 
+LuaTele.sendText(msg.chat_id,msg.reply_to_message_id,"*"..sendheen.."*","md", true) 
+end
 if text == "انصحني" or text == "انصحنى" or text == "انصح" then 
 if Redis:get(Tshak.."Status:Games"..msg.chat_id) then
 local vBandav_Msg = { 
